@@ -1,9 +1,24 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
+const express = require('express');
+const router = express.Router();
+const Picture = require('../models/picture');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res, next) => {
+  const title = '展示写（舎）';
+  if (req.user) {
+    Picture.findAll({
+      order: [['updatedAt', 'DESC']]
+    }).then(pictures => {
+      res.render('index', {
+        title: title,
+        user: req.user,
+        pictures: pictures
+      });
+    });
+  } else {
+    res.render('index', { title: title, user: req.user });
+  }
 });
 
 module.exports = router;

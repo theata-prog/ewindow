@@ -1,5 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.jumbotron.my-3.shadow-lg.bg-secondary
+    h1.display-4 展示写（舎）
+    p.lead 展示写（舎）は、電子上で気軽に画像を投稿し、展覧会のような空間を共有できるサービスです。
+      br 
+      | GitHubのアカウントでログインすることで、サービスを利用できます。
+      br
+      | 現状はJPEG形式の写真の投稿に対応しています。
+  if user
+    div
+      a(href="/pictures/new").btn.btn-info 画像投稿
+    - var hasPicture = pictures.length > 0
+    if hasPicture
+      h3.my-3 画像一覧
+      table.table
+        tr
+          th 投稿名
+          th 更新日時
+        each picture in pictures
+          tr
+          td
+            a(href=`/pictures/${picture.pictureId}`) #{picture.pictureTitle}
+          td #{picture.updatedAt}

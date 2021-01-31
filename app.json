@@ -1,0 +1,8 @@
+{
+    "name": "schedule-arranger",
+    "description": "展示写（舎）",
+    "logo": "",
+    "keywords": ["node"],
+    "image": "heroku/nodejs"
+  }
+  
