@@ -19,6 +19,7 @@ User.sync().then(() => {
 var GitHubStrategy = require('passport-github2').Strategy;
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || 'f576dc5adb76092de163';
 var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || '7fc2a0f2ddea39159c6f6d7c6b4b2b0a8efd7074';
+
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
@@ -40,10 +41,11 @@ passport.use(new GitHubStrategy({
         username: profile.username
       }).then(() => {
         done(null, profile);
-      })
+      });
     });
   }
 ));
+
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
