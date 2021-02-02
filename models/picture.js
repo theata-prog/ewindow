@@ -28,7 +28,7 @@ const picture = loader.database.define(
     },
     updatedAt: {
       type: Sequelize.DATE,
-      allowNull: false
+      timezone: "+09:00",
     }
   },
   {
