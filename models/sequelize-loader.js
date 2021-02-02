@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 if (process.env.DATABASE_URL) {
     const pg = require('pg');
     pg.defaults.ssl = true;
