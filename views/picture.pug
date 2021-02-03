@@ -14,7 +14,8 @@ block content
 
 
   each user in users
-    if user
+    - var isDeletable = (user.username === picture.user.username)
+    if isDeletable
       h3 投稿の削除
       form(method="post", action=`/pictures/${picture.pictureId}?delete=1`)
         input(type="hidden" name="_csrf" value!=csrfToken)
