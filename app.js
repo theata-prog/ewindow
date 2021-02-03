@@ -7,7 +7,7 @@ var logger = require('morgan');
 var helmet = require('helmet');
 var session = require('express-session');
 var passport = require('passport');
-var multer = require('multer');
+var multer = require('multer'); //画像を送信してもらうためのライブラリ
 
 // モデルの読み込み
 var User = require('./models/user');
@@ -63,7 +63,7 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon.ico')); //ファビコンを導入
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 app.use(multer({

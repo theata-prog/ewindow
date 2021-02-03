@@ -28,10 +28,9 @@ router.post('/',  authenticationEnsurer, csrfProtection, (req, res, next) => {
   })
   var upload = multer({ storage: storage })
 
+  //画像をアップロード、投稿情報などを格納
   upload.single('photo')
   console.log(req.file.originalname + 'をアップロードしました');
-  console.log(req.file.filename);
-  console.log(req.file);
     Picture.create({
     pictureId: pictureId,
     pictureTitle: req.body.pictureTitle,
@@ -96,11 +95,12 @@ router.post('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, nex
     }
   });
 });
-
+//投稿されたユーザーが一致するか確かめる
 function isMine(req, picture) {
   return picture && parseInt(picture.createdBy) === parseInt(req.user.id);
 }
 
+//投稿を削除する関数
 function deletePictureAggregate(pictureId, done, err) {
 
   Picture.findAll({

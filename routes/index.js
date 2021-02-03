@@ -6,6 +6,7 @@ const Picture = require('../models/picture');
 /* GET home page. */
 router.get('/', (req, res, next) => {
   const title = '展示写（舎）';
+  //投稿を取得して表示
   if (req.user) {
     Picture.findAll({
       order: [['updatedAt', 'DESC']]
