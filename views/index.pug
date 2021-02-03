@@ -2,7 +2,7 @@ extends layout
 
 block content
   div.jumbotron.my-3.shadow-lg.bg-secondary
-    h1.display-4 展示写（舎）
+    h1.display-3 展示写（舎）
     p.lead 展示写（舎）は、電子上で気軽に画像を投稿し、展覧会のような空間を共有できるサービスです。
       br 
       | GitHubのアカウントでログインすることで、サービスを利用できます。
@@ -16,8 +16,8 @@ block content
       h3.my-3 画像一覧
       table.table
         tr
-          th 投稿名
-          th 更新日時
+          th タイトル
+          th 投稿日時
         each picture in pictures
           tr
           td
