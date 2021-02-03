@@ -9,3 +9,13 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Noto Serif JP', serif;
 }
+
+.animate__animated.animate__fadeInRight {
+    --animate-duration: 2s;
+    --animate-delay: 1s;
+  }
+
+.animate__animated.animate__fadeInUp {
+  --animate-duration: 2s;
+  --animate-delay: 1s;
+}

@@ -9,7 +9,7 @@ block content
       | #{picture.statement}
     div.card-footer
       p 作成者: #{picture.user.username}
-    div
+    div.animate__animated.animate__fadeInUp
       img(src=`/images/${picture.photo}.jpg`, class="img-fluid" alt="画像")
 
 
