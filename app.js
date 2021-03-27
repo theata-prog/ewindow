@@ -7,8 +7,7 @@ var logger = require('morgan');
 var helmet = require('helmet');
 var session = require('express-session');
 var passport = require('passport');
-var multer = require('multer'); //画像を送信してもらうためのライブラリ
-
+var multer = require('multer');
 
 // モデルの読み込み
 var User = require('./models/user');
@@ -18,10 +17,9 @@ User.sync().then(() => {
   Picture.sync();
 });
 
-
 var GitHubStrategy = require('passport-github2').Strategy;
-var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || 'f576dc5adb76092de163';
-var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || '7fc2a0f2ddea39159c6f6d7c6b4b2b0a8efd7074';
+var GITHUB_CLIENT_ID = 'a547dc6862c7c5fe6c31';
+var GITHUB_CLIENT_SECRET = 'ad2e258764914e6172c00e539c2c1f2ed83858a5';
 
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -35,7 +33,7 @@ passport.deserializeUser(function (obj, done) {
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
   clientSecret: GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.HEROKU_URL ? process.env.HEROKU_URL + 'auth/github/callback' : 'http://localhost:8000/auth/github/callback'
+  callbackURL:'http://localhost:8000/auth/github/callback'
 },
   function (accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
@@ -48,7 +46,6 @@ passport.use(new GitHubStrategy({
     });
   }
 ));
-
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -66,19 +63,13 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(favicon(__dirname + '/public/images/favicon.ico')); //ファビコンを導入
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
-
 app.use(multer({
-  // inMemoryをtrueにすると、アップされたfileはBuffer形式として、file.bufferに格納される。
-  inMemory : true,
-  onFileUploadComplete: function(file, req, res) {
-    console.log('UP完了：' + file.path);
-  },
-  // putSingleFilesInArrayをtureにすると、ファイル一個しか選択されても配列として扱う
-  putSingleFilesInArray: true
-}).single('photo'));
+  dest:'./public/images',
+}
+).single('photo'));
 
 
 app.use(session({ secret: 'a71a996772364c69', resave: false, saveUninitialized: false }));
