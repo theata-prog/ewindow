@@ -9,6 +9,7 @@ var session = require('express-session');
 var passport = require('passport');
 var multer = require('multer'); //画像を送信してもらうためのライブラリ
 
+
 // モデルの読み込み
 var User = require('./models/user');
 var Picture = require('./models/picture');
@@ -16,6 +17,7 @@ User.sync().then(() => {
   Picture.belongsTo(User, {foreignKey: 'createdBy'});
   Picture.sync();
 });
+
 
 var GitHubStrategy = require('passport-github2').Strategy;
 var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || 'f576dc5adb76092de163';
@@ -47,6 +49,7 @@ passport.use(new GitHubStrategy({
   }
 ));
 
+
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
@@ -66,10 +69,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(favicon(__dirname + '/public/images/favicon.ico')); //ファビコンを導入
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
+
 app.use(multer({
-  dest:'./public/images',
-}
-).single('photo'));
+  // inMemoryをtrueにすると、アップされたfileはBuffer形式として、file.bufferに格納される。
+  inMemory : true,
+  onFileUploadComplete: function(file, req, res) {
+    console.log('UP完了：' + file.path);
+  },
+  // putSingleFilesInArrayをtureにすると、ファイル一個しか選択されても配列として扱う
+  putSingleFilesInArray: true
+}).single('photo'));
 
 
 app.use(session({ secret: 'a71a996772364c69', resave: false, saveUninitialized: false }));
