@@ -5,11 +5,23 @@ const authenticationEnsurer = require('./authentication-ensurer');
 const uuid = require('uuid');
 const Picture = require('../models/picture');
 const User = require('../models/user');
-const multer = require('multer');
 const picture = require('../models/picture');
-const fs = require("fs");
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
+const multer = require('multer');
+const multerGoogleStrage = require('multer-google-storage');
+//GoogleStrageの設定や保存先の設定
+var uploadHandler = multer({
+  storage: multerGoogleStrage.storageEngine({
+    autoRetry: true,
+    bucket: 'ewindow-upload',
+    projectId: 'ewindow',
+    keyFilename: './ewindow-06ebcfc5d100.json',
+    filename: (req, file, cb) => {
+      cb(null, `${Date.now()}_${file.originalname}`);
+    }
+  })
+});
 
 
 router.get('/new', authenticationEnsurer, csrfProtection, (req, res, next) => {
@@ -17,32 +29,23 @@ router.get('/new', authenticationEnsurer, csrfProtection, (req, res, next) => {
 });
 
 // upload.single('photo')
-router.post('/',  authenticationEnsurer, csrfProtection, (req, res, next) => {
+router.post('/', uploadHandler.single('photo'), authenticationEnsurer, csrfProtection, (req, res, next) => {
   const pictureId = uuid.v4();
   const updatedAt = new Date();
-  var storage = multer.diskStorage({
-    // ファイルの保存先を指定
-    destination: function (req, file, cb) {
-      cb(null, '/public/images/')
-    }
-  })
-  var upload = multer({ storage: storage })
-
-  upload.single('photo')
-  console.log(req.file.originalname + 'をアップロードしました');
-    Picture.create({
+  
+  //写真の情報の登録
+  Picture.create({
     pictureId: pictureId,
     pictureTitle: req.body.pictureTitle,
-    photo: req.file.filename,
     statement: req.body.statement,
     createdBy: req.user.id,
     updatedAt: updatedAt,
+    pictureUrl: req.file.path
   }).then((picture) => {
+    console.log(picture.pictureUrl);
     res.redirect('/pictures/' + picture.pictureId);
-    fs.renameSync(`${req.file.path}`, `${req.file.path}.jpg`);
   });
 });
-
 
 router.get('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, next) => {
   Picture.findOne({
@@ -57,20 +60,21 @@ router.get('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, next
     order: [['updatedAt', 'DESC']]
   }).then((picture) => {
     if (picture) {
-        res.render('picture', {
-          user: req.user,
-          picture: picture,
-          users: [req.user],
-          csrfToken: req.csrfToken()
-        });
-      } else {
-        const err = new Error('指定された投稿が見つかりません');
-        err.status = 404;
-        next(err);
-      }
+      res.render('picture', {
+        user: req.user,
+        picture: picture,
+        users: [req.user],
+        csrfToken: req.csrfToken()
+      });
+    } else {
+      const err = new Error('指定された投稿が見つかりません');
+      err.status = 404;
+      next(err);
+    }
   });
 });
 
+//削除処理
 router.post('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, next) => {
   Picture.findOne({
     where: {
@@ -95,10 +99,12 @@ router.post('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, nex
   });
 });
 
+//投稿が本人の物か確認
 function isMine(req, picture) {
   return picture && parseInt(picture.createdBy) === parseInt(req.user.id);
 }
 
+//投稿を消す関数
 function deletePictureAggregate(pictureId, done, err) {
 
   Picture.findAll({

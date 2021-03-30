@@ -14,10 +14,6 @@ const picture = loader.database.define(
       type: Sequelize.STRING,
       allowNull: false
     },
-    photo: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
     statement: {
       type: Sequelize.TEXT,
       allowNull: true
@@ -29,6 +25,11 @@ const picture = loader.database.define(
     updatedAt: {
       type: Sequelize.DATE,
       timezone: "+09:00",
+      allowNull: false
+    },
+    pictureUrl: {
+      type: Sequelize.STRING,
+      allowNull: false
     }
   },
   {

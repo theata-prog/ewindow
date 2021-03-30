@@ -4,13 +4,13 @@ block content
   div.card.my-3.text-dark
     div.card-header
       h4 #{picture.pictureTitle}
+    div.animate__animated.animate__fadeInUp
+      img(src= picture.pictureUrl, class="img-fluid" alt="画像")
     div.card-body
       h5 statement
       | #{picture.statement}
     div.card-footer
       p 作成者: #{picture.user.username}
-    div.animate__animated.animate__fadeInUp
-      img(src=`/images/${picture.photo}.jpg`, class="img-fluid" alt="画像")
 
 
   each user in users
@@ -20,4 +20,3 @@ block content
       form(method="post", action=`/pictures/${picture.pictureId}?delete=1`)
         input(type="hidden" name="_csrf" value!=csrfToken)
         button(type="submit").btn.btn-danger.my-4 この投稿を削除する
-
