@@ -10,14 +10,13 @@ const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 const multer = require('multer');
 const multerGoogleStrage = require('multer-google-storage');
-const keys = JSON.stringify(process.env.GCLOUD_PROJECT);
 //GoogleStrageの設定や保存先の設定
 var uploadHandler = multer({
   storage: multerGoogleStrage.storageEngine({
     autoRetry: true,
-    bucket: process.env.GCS_BUCKET,
+    bucket: 'ewindow-upload',
     projectId: 'ewindow',
-    keyFilename: keys,
+    keyFilename: process.env.GCS_KEYFILE,
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}_${file.originalname}`);
     }
