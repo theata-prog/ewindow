@@ -16,9 +16,9 @@ const keys = JSON.stringify(keysEnvVar);
 var uploadHandler = multer({
   storage: multerGoogleStrage.storageEngine({
     autoRetry: true,
-    bucket: 'ewindow-upload',
-    projectId: 'ewindow',
-    keyFilename: keys,
+    bucket: process.env.GCS_BUCKET,
+    projectId: process.env.GCLOUD_PROJECT,
+    keyFilename: process.env.GCS_KEYFILE,
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}_${file.originalname}`);
     }
