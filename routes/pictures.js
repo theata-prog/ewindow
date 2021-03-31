@@ -16,7 +16,7 @@ var uploadHandler = multer({
     autoRetry: true,
     bucket: 'ewindow-upload',
     projectId: 'ewindow',
-    keyFilename: process.env.GCS_KEYFILE,
+    keyFilename:'./' +  process.env.GCS_KEYFILE,
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}_${file.originalname}`);
     }
