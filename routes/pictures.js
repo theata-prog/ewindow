@@ -16,7 +16,7 @@ var uploadHandler = multer({
   storage: multerGoogleStrage.storageEngine({
     autoRetry: true,
     bucket: process.env.GCS_BUCKET,
-    projectId: ewindow,
+    projectId: 'ewindow',
     keyFilename: keys,
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}_${file.originalname}`);
