@@ -12,11 +12,11 @@ block content
     div.card-footer
       p 作成者: #{picture.user.username}
 
-
-  each user in users
-    - var isDeletable = (user.username === picture.user.username)
-    if isDeletable
-      h3 投稿の削除
-      form(method="post", action=`/pictures/${picture.pictureId}?delete=1`)
-        input(type="hidden" name="_csrf" value!=csrfToken)
-        button(type="submit").btn.btn-danger.my-4 この投稿を削除する
+  if user 
+    each user in users
+      - var isDeletable = (user.username === picture.user.username)
+      if isDeletable
+        h3 投稿の削除
+        form(method="post", action=`/pictures/${picture.pictureId}?delete=1`)
+          input(type="hidden" name="_csrf" value!=csrfToken)
+          button(type="submit").btn.btn-danger.my-4 この投稿を削除する
