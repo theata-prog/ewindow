@@ -8,7 +8,6 @@ const picture = require('../models/picture');
 /* GET home page. */
 router.get('/', (req, res, next) => {
   const title = '展示写（舎）';
-  if (req.user) {
     Picture.findAll({
       order: [['updatedAt', 'DESC']]
     }).then(pictures => {
@@ -21,7 +20,7 @@ router.get('/', (req, res, next) => {
         pictures: pictures
       });
     });
-  } else {
+    {
     res.render('index', { title: title, user: req.user });
   }
 });
