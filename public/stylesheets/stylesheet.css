@@ -1,21 +1,26 @@
 :root{
-    font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Serif JP', serif;
 }
 
 body {
-    font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Serif JP', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Serif JP', serif;
+}
+
+table {
+margin:auto;
 }
 
 .animate__animated.animate__fadeInRight {
-    --animate-duration: 2s;
-    --animate-delay: 1s;
-  }
-
-.animate__animated.animate__fadeInUp {
   --animate-duration: 2s;
   --animate-delay: 1s;
 }
+
+.animate__animated.animate__fadeInUp {
+--animate-duration: 2s;
+--animate-delay: 1s;
+}
+
