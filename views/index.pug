@@ -21,5 +21,7 @@ block content
         each picture in pictures
           tr
           td
-            a(href=`/pictures/${picture.pictureId}`) #{picture.pictureTitle}
+            div
+              a(href=`/pictures/${picture.pictureId}`, class="thumnail")
+                img(src=picture.pictureUrl,width="200" height="auto" )
           td #{picture.formattedUpdatedAt}
