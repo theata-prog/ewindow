@@ -17,12 +17,9 @@ router.get('/', (req, res, next) => {
       res.render('index', {
         title: title,
         user: req.user,
-        pictures: pictures
+        pictures: pictures,
       });
     });
-    {
-    res.render('index', { title: title, user: req.user });
-  }
 });
 
 module.exports = router;
