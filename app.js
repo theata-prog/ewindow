@@ -61,13 +61,14 @@ app.use(helmet());  // Express推奨のセキュリティ対策
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(favicon(__dirname + '/public/images/favicon.ico')); //ファビコンを導入
 app.use(cookieParser());
 
-app.use(express.static(__dirname + '/public'));
 
 
 app.use(session({ secret: 'a71a996772364c69', resave: false, saveUninitialized: false }));
