@@ -4,6 +4,7 @@ html
     title 展示写（舎）
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="./public/styleseets/styleseet.css")
     link(rel="stylesheet",
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",
@@ -11,11 +12,9 @@ html
     link(rel="preconnect" href="https://fonts.gstatic.com")
     link(href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css")
-    link(rel="stylesheet" href="/stylesheets/stylesheet.css")
 
 
-
-  body.bg-dark.text-white
+  body.bg-dark.text-white 
     nav.navbar.navbar-light.bg-light.rounded-pill
       div.navbar-header
         a(href="/").navbar-brand.nav-link.text 展示写（舎）
@@ -30,4 +29,5 @@ html
       block content
     script(src="/javascripts/bundle.js")
     script(src="/images/main.js")
+    link(href="/images/*.jpg")
     
