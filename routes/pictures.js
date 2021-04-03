@@ -87,7 +87,7 @@ router.post('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, nex
           res.redirect('/');
         });
       }
-    } else if (picture && username === process.env.ADMIN) {
+    } else if (picture && req.user.username === process.env.ADMIN) {
         if (parseInt(req.query.delete) === 1) {
           deletePictureAggregate(req.params.pictureId, () => {
             res.redirect('/');
