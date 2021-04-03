@@ -17,7 +17,7 @@ block content
     - var username = user.username || user.displayName; //認証サービスごとのユーザー名
     - var isDeletable = (username === picture.user.username || username === process.env.ADMIN)
     if isDeletable
-      h3 投稿の削除
+      h3.text-danger 投稿の削除
       form(method="post", action=`/pictures/${picture.pictureId}?delete=1`)
         input(type="hidden" name="_csrf" value!=csrfToken)
         button(type="submit").btn.btn-danger.my-4 この投稿を削除する
