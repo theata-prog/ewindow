@@ -22,7 +22,7 @@ html
         if user
           li.nav-item
           - var username = user.username || user.displayName; //認証サービスごとのユーザー名
-            a(href="/logout").nav-link.btn.btn-light.my-.text-dark #{user} をログアウト
+            a(href="/logout").nav-link.btn.btn-light.my-.text-dark #{username} をログアウト
         else
           li.nav-item
             a(href="/login").nav-link.btn.btn-light.my-.text-dark ログイン
