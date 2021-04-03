@@ -2,7 +2,7 @@ extends layout
 
 block content
   div.card.my-3.text-dark
-    div.card-header
+    div.card-header.my-2
       h4 #{picture.pictureTitle}
     div.animate__animated.animate__fadeInUp
       img(src= picture.pictureUrl, class="img-fluid" alt="画像")
@@ -12,11 +12,11 @@ block content
     div.card-footer
       p 作成者: #{picture.user.username}
 
-  if user 
-    each user in users
-      - var isDeletable = (user.username === picture.user.username)
-      if isDeletable
-        h3 投稿の削除
-        form(method="post", action=`/pictures/${picture.pictureId}?delete=1`)
-          input(type="hidden" name="_csrf" value!=csrfToken)
-          button(type="submit").btn.btn-danger.my-4 この投稿を削除する
+
+  each user in users
+    - var isDeletable = (user.username === picture.user.username)
+    if isDeletable
+      h3 投稿の削除
+      form(method="post", action=`/pictures/${picture.pictureId}?delete=1`)
+        input(type="hidden" name="_csrf" value!=csrfToken)
+        button(type="submit").btn.btn-danger.my-4 この投稿を削除する

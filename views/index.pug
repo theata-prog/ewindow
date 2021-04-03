@@ -2,10 +2,12 @@ extends layout
 
 block content
   div.jumbotron.my-2.shadow-lg.bg-secondary
-    h1.display-3.border-bottom.animate__animated.animate__zoomIn 展示写（舎）
-    p.lead 展示写（舎）は、電子上で気軽に画像を投稿し、展覧会のような空間を共有できるサービスです。
+    h1.display-3.border-bottom.animate__animated.animate__zoomIn E-Window
+    p.lead E-Windowは、電子上で気軽に画像を投稿し、共有できるサイトです。
       br 
-      | GitHubのアカウントでログインすることで、画像を投稿できます。
+      | GitHubのアカウントでログインすることで、画像を投稿したり、
+      br
+      |画像の詳細情報を見ることができます。
   div
     a(href="/pictures/new").btn.btn-info.my-3 画像投稿
   - var hasPicture = pictures.length > 0
@@ -15,6 +17,6 @@ block content
       each picture in pictures
         tr
         td
-          div
+          div.img-wrap.border.border-5.border-dark.my-3
             a(href=`/pictures/${picture.pictureId}`, class="thumnail")
-              img(src=picture.pictureUrl,width="400" height="auto" )
+              img(src=picture.pictureUrl,width="500" height="auto" )

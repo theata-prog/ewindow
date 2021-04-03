@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title 展示写（舎）
+    title E-Window
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="stylesheet",
@@ -14,17 +14,17 @@ html
     link(rel="stylesheet" type="text/css" href='/stylesheets/stylesheet.css')
 
 
-  body.bg-dark.text-white 
-    nav.navbar.navbar-light.bg-light.rounded-pill
+  body.bg-light.text-white 
+    nav.navbar.navbar-light.bg-dark.rounded-pill
       div.navbar-header
-        a(href="/").navbar-brand.nav-link.text 展示写（舎）
+        a(href="/").navbar-brand.nav-link.text-light 展示写（舎）
       ul.navbar-nav
         if user
           li.nav-item
-            a(href="/logout").nav-link #{user.username} をログアウト
+            a(href="/logout").nav-link.btn.btn-light.my-.text-dark #{user.username} をログアウト
         else
           li.nav-item
-            a(href="/login").nav-link ログイン
+            a(href="/login").nav-link.btn.btn-light.my-.text-dark ログイン
     div.container
       block content
     script(src="/javascripts/bundle.js")
