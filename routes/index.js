@@ -7,7 +7,7 @@ const picture = require('../models/picture');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  const title = '展示写（舎）';
+  const title = 'E-Window';
     Picture.findAll({
       order: [['updatedAt', 'DESC']]
     }).then(pictures => {

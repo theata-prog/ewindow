@@ -2,7 +2,7 @@ extends layout
 
 block content
   div.jumbotron.my-2.shadow-lg.bg-secondary
-    h1.display-3.border-bottom.animate__animated.animate__zoomIn E-Window
+    h1.display-4.border-bottom.animate__animated.animate__zoomIn E-Window
     p.lead E-Windowは、電子上で気軽に画像を投稿し、共有できるサイトです。
       br 
       | Googleか、GitHubのアカウントでログインすることで、画像を投稿したり、
@@ -12,11 +12,13 @@ block content
     a(href="/pictures/new").btn.btn-info.my-3 画像投稿
   - var hasPicture = pictures.length > 0
   if hasPicture
-    table.table-hover.animate__animated.animate__fadeInUpBig
+    table.table-striped.table-hover.animate__animated.animate__fadeInUpBig
       tr
       each picture in pictures
         tr
         td
-          div.img-wrap.border.border-5.border-dark.my-3
+          div.img-wrap.text-center.my-3
             a(href=`/pictures/${picture.pictureId}`, class="thumnail")
-              img(src=picture.pictureUrl,width="500" height="auto" )
+              img.border.border-dark(src=picture.pictureUrl,width="50%" height="auto" )
+              div.mask
+                p.caption #{picture.pictureTitle}
