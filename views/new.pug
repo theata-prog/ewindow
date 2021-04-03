@@ -1,15 +1,15 @@
 extends layout
 
 block content
-  form(method="post", action="/pictures",  enctype="multipart/form-data").my-3.border.boder-dark
+  form(method="post", action="/pictures",  enctype="multipart/form-data").my-3.text-dark
     input(type="hidden" name="_csrf" value!=csrfToken)
     div.form-group
       label(for="pictureTitle") タイトル
-      input(type="text" name="pictureTitle")#pictureTitle.form-control
+      input(type="text" name="pictureTitle")#pictureTitle.form-control.border-border-dark
     div
       h5 画像
-      input(type="file", name="photo", accept="image/jpg")#pictureTitle.form-control
+      input(type="file", name="photo", accept="image/jpg")#pictureTitle.form-control.border-border-dark
     div.form-group
       label(for="statement") ステートメント
-      textarea(name="statement")#statement.form-control
+      textarea(name="statement")#statement.form-control.border-border-dark
     button(type="submit").btn.btn-info 投稿
