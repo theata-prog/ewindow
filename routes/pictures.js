@@ -16,7 +16,7 @@ var uploadHandler = multer({
     autoRetry: true,
     bucket: 'ewindow-upload',
     projectId: 'ewindow',
-    keyFilename:'./ewindow-e4bdf30bfe27.json',
+    keyFilename:process.env.GOOGLE_APPLICATION_CREDENTIALS,
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}_${file.originalname}`);
     }
