@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  form(method="post", action="/pictures",  enctype="multipart/form-data").my-3
+  form(method="post", action="/pictures",  enctype="multipart/form-data").my-3.border.boder-dark
     input(type="hidden" name="_csrf" value!=csrfToken)
     div.form-group
       label(for="pictureTitle") タイトル
