@@ -61,8 +61,8 @@ passport.deserializeUser(function (user, done) {
 });
 
 passport.use(new GoogleStrategy({
-  clientID: GOOGLE_CLIENT_ID,
-  clientSecret: GOOGLE_CLIENT_SECRET,
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: process.env.HEROKU_URL ? process.env.HEROKU_URL + 'auth/google/callback' :'http://localhost:8000/auth/google/callback'
 },
 function (accessToken, refreshToken, profile, done) {
