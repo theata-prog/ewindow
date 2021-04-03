@@ -16,7 +16,7 @@ var uploadHandler = multer({
     autoRetry: true,
     bucket: 'ewindow-upload',
     projectId: 'ewindow',
-    keyFilename:process.env.GOOGLE_APPLICATION_CREDENTIALS,
+    keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}_${file.originalname}`);
     }
@@ -32,7 +32,7 @@ router.get('/new', authenticationEnsurer, csrfProtection, (req, res, next) => {
 router.post('/', uploadHandler.single('photo'), authenticationEnsurer, csrfProtection, (req, res, next) => {
   const pictureId = uuid.v4();
   const updatedAt = new Date();
-  
+
   //写真の情報の登録
   Picture.create({
     pictureId: pictureId,
@@ -86,17 +86,19 @@ router.post('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, nex
         deletePictureAggregate(req.params.pictureId, () => {
           res.redirect('/');
         });
-      } else {
-        const err = new Error('不正なリクエストです');
-        err.status = 400;
-        next(err);
       }
-    } else {
-      const err = new Error('指定された投稿がないか、削除する権限がありません');
-      err.status = 404;
-      next(err);
-    }
-  });
+    } else if (picture && username === process.env.ADMIN) {
+        if (parseInt(req.query.delete) === 1) {
+          deletePictureAggregate(req.params.pictureId, () => {
+            res.redirect('/');
+          });
+        }
+      } else {
+          const err = new Error('指定された投稿がないか、削除する権限がありません');
+          err.status = 404;
+          next(err);
+        }
+      });
 });
 
 //投稿が本人の物か確認
