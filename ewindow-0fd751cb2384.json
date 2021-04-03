@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ewindow",
+  "private_key_id": "0fd751cb2384330706bd7b6ee783a73ce433551b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCoCV6jChK3wvzW\npelGQFUEzg2EpFKoL70uEpCy5IMuvlBBKSwTzd5K9Lrtf3f3p++0Lm8mRpyY+EZ/\nKqkEWts4enJDKjJp9oFzMq+RC+bJQRRCjK8t5Tde2pQThXf6osGrqK/78RRnNCD5\nterj5jbFnS3hxLmz7cliJN41FVaJ0ikKQIrX/R8uRZIL2NOjsRUpeCcN2PyEMLqN\ns//l+vOMnbMQyfmfnMQfhTP/KBAAwUzqxM1X7k2ybTtLtN7TzzysB7ybgBoQ3F3c\nW2eZd4JSMkgtoVaNNqX4DRWC0cheexUayTVn6B7LAXOQxv+PoBztGETQXwksfGba\nBH/fAi+NAgMBAAECggEABcKQdmlFe/wYm6kDRo+0+l2v0/CoDrDYPMiRIji4EHWg\nnaMyKhmf+ZTLBZIdhCVDD7uZvsej3ZCBJiHJumb85cI4wXmkUcKL7G173C56wkJT\nVfapmJqnW76FXefw1WwX1HELW0kHyIPeb4DfZOGC1iJNrNQIA5VulkkqPsqU9VNr\nMSnEc0WoQjRA2o35pfljmWlJDUmV6O1vwlupW/52/XeFETvjlD9TLikCJ4qJOf3T\n450I4MTXpNGHTCbeXsawj91sTmwOcGuDurzMBYkiFsXidWzbQ2vcHIxbNzMt4JIM\nHwcdDgEAsngIZwTem6G19qf+yPoedCp4bKjliAHKZwKBgQDSkuah7Cgfl81oDcnM\nGZmtGcHpU5NE/iIYEGCB12Eiy9bfpfWArobr1EqViTIeFKGHvGiszUqSjWb/S7kH\nG/mPlTzcv4NGecMDWByq1jtFmCSuSvykMJ7go0h1R47VmmELN01liEGGTQ+Tp6B7\nvqE9YTjZIi/+Z0wdaPtWuIWZNwKBgQDMSVFoQvA66st1ZUO15XqnKIKfqed0HiXN\npRsAvujJwKldVLpIuSTzwjvHl8ieDF4A1+BuDamqqOhdbNlPz2qiQc/tCe1YLfsU\n3IAPoISyy33DcZBkKCjU9BS0y0F1Ree0pETRvZJYgmt6tndolLvp7nLUAmhP9yqi\nxHik3AmPWwKBgGRuLdOCh6xxwUTkdp+Cgjn98+8triqUrnwdq3mh2LE42RW32Hx0\nQONPT/c8BQw1uMi9QotQKkX1bO9MFUZfwEoL2ohKSvkc77azmpCcNo69vpjmKNLC\nYbQwDEnrRCN6StiHmsFXGDFOpaQ9qZv7Unms2ektlghXCgVo4Z79yLJHAoGAVX1x\nRfKNWfqcPnqsRVjNZVq8n1iY9a0QIOkxTbSW8qdfuSEV/A0O+7uTDMnmOM3wIOY2\nk5fAIx0gcMh2gMHKXDCydP4shzRm2KoWJXQFVFV4Qewqgt+ThtrGN4q/z/X7K0t7\nSVLOBaA+nlHx0qA7q4AQKc0AHkbPXuJdopA6p/UCgYB6G/h7b/J1zuuBOxEkh5CM\nU/GoJPaZXY1UP9VxiYwN1mFsK7nzqmWeiY522YowMBtH7XO5a2os1pQ6tpoqq1MA\nzW8IzvQfAkoXd9+JEtQyFCRQx/X5XK/LAFFYgQq1xEZlV112wqrvq546gDOYZsEU\nnVnlKE4wXZ2ju34EmSkkGA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "ewindow-photos@ewindow.iam.gserviceaccount.com",
+  "client_id": "118139004261037965764",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ewindow-photos%40ewindow.iam.gserviceaccount.com"
+}
