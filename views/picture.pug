@@ -14,6 +14,7 @@ block content
 
 
   each user in users
+    - var username = user.username || user.displayName; //認証サービスごとのユーザー名
     - var isDeletable = (user.username === picture.user.username)
     if isDeletable
       h3 投稿の削除

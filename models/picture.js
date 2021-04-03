@@ -19,7 +19,7 @@ const picture = loader.database.define(
       allowNull: true
     },
     createdBy: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.DECIMAL,
       allowNull: false
     },
     updatedAt: {

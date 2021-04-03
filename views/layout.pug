@@ -21,7 +21,8 @@ html
       ul.navbar-nav
         if user
           li.nav-item
-            a(href="/logout").nav-link.btn.btn-light.my-.text-dark #{user.username} をログアウト
+          - var username = user.username || user.displayName; //認証サービスごとのユーザー名
+            a(href="/logout").nav-link.btn.btn-light.my-.text-dark #{user} をログアウト
         else
           li.nav-item
             a(href="/login").nav-link.btn.btn-light.my-.text-dark ログイン
