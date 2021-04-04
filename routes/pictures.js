@@ -47,7 +47,7 @@ router.post('/', uploadHandler.single('photo'), authenticationEnsurer, csrfProte
   });
 });
 
-router.get('/:pictureId', authenticationEnsurer, csrfProtection, (req, res, next) => {
+router.get('/:pictureId', csrfProtection, (req, res, next) => {
   Picture.findOne({
     include: [
       {
