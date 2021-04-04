@@ -14,7 +14,7 @@ block content
       div.tweet-area
         script.
           !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-        a.twitter-share-button(href='https://twitter.com/share' data-hashtags='ewindow' data-url=`https://polar-earth-39625.herokuapp.com/pictures/${picture.pictureId}\n` data-text=`${picture.pictureTitle}\n`  data-lang='ja' data-count='none' data-size='large') Tweet Button
+        a.twitter-share-button(href='https://twitter.com/share' data-hashtags='ewindow' data-url=`https://polar-earth-39625.herokuapp.com/pictures/${picture.pictureId}\n` data-text=`「${picture.pictureTitle}」\n`  data-lang='ja' data-count='none' data-size='large') Tweet Button
 
   if user 
     each user in users
